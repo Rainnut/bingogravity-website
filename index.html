@@ -4,14 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bingo Gravity | Independent Game Development & Global Publishing</title>
+  <title>Bingo Gravity | Crafting Digital Entertainment</title>
   <meta name="description"
-    content="Bingo Gravity - Creating games for 10 million players worldwide. Independent game development and global publishing.">
+    content="Bingo Gravity - Independent Game Development & Global Publishing. A platform for new entertainment models.">
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
+    /* CSS Variables */
+    :root {
+      --primary: #00f0ff;
+      /* Cyber Cyan */
+      --secondary: #bf00ff;
+      /* Neon Purple */
+      --tertiary: #ff0055;
+      /* Hot Pink (Accent) */
+      --bg-dark: #050510;
+      /* Deep Space */
+      --bg-card: #121225;
+      /* Card BG */
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0b0;
+      --gradient-main: linear-gradient(135deg, #0b0c15 0%, #1a103c 100%);
+      --gradient-accent: linear-gradient(90deg, var(--secondary), var(--primary));
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+      --container-width: 1200px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Reset & Base Styles */
     * {
       margin: 0;
       padding: 0;
@@ -23,299 +53,521 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: #0A1628;
+      font-family: var(--font-body);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       line-height: 1.6;
-      background: #ffffff;
+      overflow-x: hidden;
+      font-size: 18px;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-display);
+      color: #fff;
+      text-transform: uppercase;
+      line-height: 1.2;
     }
 
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
     }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-    }
-
-    .logo {
-      font-size: 24px;
-      font-weight: 800;
-      color: #0A1628;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
+    ul {
       list-style: none;
     }
 
-    .nav-links a {
-      color: #0A1628;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 15px;
-      transition: color 0.2s ease;
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .nav-links a:hover {
-      color: #0066FF;
+    /* Utility Classes */
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: #0A1628;
+    .text-gradient {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .hero {
-      background: #ffffff;
-      padding: 160px 0 100px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      font-weight: 800;
-      color: #0A1628;
-      margin-bottom: 16px;
-      letter-spacing: -2px;
-      line-height: 1.1;
-    }
-
-    .hero .subtitle {
-      font-size: 24px;
-      color: #0A1628;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .hero .tagline {
-      font-size: 18px;
-      color: #6b7280;
-      margin-bottom: 40px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      font-size: 15px;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-block;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: #0066FF;
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      background: #0052cc;
-    }
-
-    .btn-secondary {
-      background: #ffffff;
-      color: #0A1628;
-      border: 2px solid #0A1628;
-    }
-
-    .btn-secondary:hover {
-      background: #f9fafb;
-    }
-
-    section {
+    .section-padding {
       padding: 100px 0;
     }
 
     .section-title {
       text-align: center;
       margin-bottom: 60px;
+      position: relative;
     }
 
     .section-title h2 {
-      font-size: 42px;
-      font-weight: 800;
-      color: #0A1628;
-      margin-bottom: 12px;
-      letter-spacing: -1px;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
     }
 
-    .section-title p {
-      font-size: 18px;
-      color: #6b7280;
+    .section-title span {
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 1rem;
     }
 
-    .about {
-      background: #ffffff;
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 20px rgba(191, 0, 255, 0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      box-shadow: inset 0 0 0 2px var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 240, 255, 0.1);
+      transform: translateY(-3px);
+      box-shadow: inset 0 0 0 2px var(--primary), 0 0 20px rgba(0, 240, 255, 0.3);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+      background: rgba(5, 5, 16, 0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    header.scrolled {
+      padding: 10px 0;
+      background: rgba(5, 5, 16, 0.95);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo i {
+      color: var(--secondary);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-link {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--bg-dark);
+      overflow: hidden;
+      padding-top: 80px;
+      /* Offset for fixed header */
+    }
+
+    /* Animated Background Mesh */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(191, 0, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 240, 255, 0.15) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .hero-grid {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+      animation: gridMove 20s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
+      }
+
+      100% {
+        transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-tagline {
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      display: inline-block;
+      background: rgba(0, 240, 255, 0.1);
+      padding: 8px 16px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* About Section */
+    .about-content {
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.03), transparent);
+      padding: 40px;
+      border-left: 4px solid var(--secondary);
+      border-radius: 0 20px 20px 0;
+    }
+
+    .about-text {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--text-muted);
+    }
+
+    .about-highlight {
+      font-size: 1.5rem;
+      color: #fff;
+      font-family: var(--font-display);
+      margin: 20px 0;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 50px;
       align-items: center;
     }
 
-    .about-content p {
-      font-size: 17px;
-      color: #374151;
-      line-height: 1.8;
-      margin-bottom: 20px;
+    .vision-box {
+      background: var(--bg-card);
+      padding: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
     }
 
-    .about-image {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 8px;
+    .vision-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: var(--gradient-accent);
+      opacity: 0.1;
+      filter: blur(40px);
     }
 
-    .games {
-      background: #F5F7FA;
-    }
-
+    /* Games Section */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
     }
 
     .game-card {
-      background: #ffffff;
-      border-radius: 8px;
+      background: var(--bg-card);
+      border-radius: 12px;
       overflow: hidden;
-      transition: box-shadow 0.2s ease;
+      position: relative;
+      transition: var(--transition);
+      group: card;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .game-card:hover {
-      box-shadow: 0 12px 24px rgba(10, 22, 40, 0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: var(--primary);
     }
 
-    .game-image {
+    .game-image-wrapper {
+      position: relative;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .game-image-wrapper img {
       width: 100%;
-      height: 320px;
+      height: 100%;
       object-fit: cover;
+      transition: transform 0.6s ease;
     }
 
-    .game-info {
-      padding: 24px;
+    .game-card:hover .game-image-wrapper img {
+      transform: scale(1.1);
+    }
+
+    .game-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+      padding: 30px 20px;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    .game-card:hover .game-overlay {
+      transform: translateY(0);
     }
 
     .game-genre {
-      font-size: 13px;
-      font-weight: 600;
-      color: #0066FF;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 8px;
-    }
-
-    .game-info h3 {
-      font-size: 24px;
+      color: var(--primary);
+      font-size: 0.9rem;
       font-weight: 700;
-      color: #0A1628;
-      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
     }
 
-    .game-info p {
-      font-size: 15px;
-      color: #6b7280;
-      line-height: 1.6;
+    .game-title {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
     }
 
-    .services {
-      background: #ffffff;
+    .game-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease 0.1s;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .services-grid {
+    .game-card:hover .game-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .game-link {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .game-link i {
+      transition: transform 0.3s;
+    }
+
+    .game-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* Business Areas */
+    .areas-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
     }
 
-    .service-card {
+    .area-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 40px 30px;
       text-align: center;
+      border-radius: 12px;
+      transition: var(--transition);
+      border: 1px solid transparent;
     }
 
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 20px;
-      display: flex;
+    .area-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .area-icon {
+      font-size: 3rem;
+      margin-bottom: 25px;
+      color: var(--secondary);
+      background: rgba(191, 0, 255, 0.1);
+      width: 80px;
+      height: 80px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
+      border-radius: 50%;
+      transition: var(--transition);
     }
 
-    .service-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #0A1628;
-      margin-bottom: 12px;
+    .area-card:hover .area-icon {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(191, 0, 255, 0.5);
     }
 
-    .service-card p {
-      font-size: 15px;
-      color: #6b7280;
-      line-height: 1.6;
+    .area-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
     }
 
-    .stats {
-      background: #0A1628;
-      color: #ffffff;
+    .area-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Statistics */
+    .stats-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://cdn.pixabay.com/photo/2021/09/07/07/11/game-console-6603120_1280.jpg');
+      /* Generic tech bg */
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
       text-align: center;
     }
 
     .stat-item h3 {
-      font-size: 48px;
-      font-weight: 800;
-      color: #ffffff;
-      margin-bottom: 8px;
+      font-size: 3.5rem;
+      color: #fff;
+      margin-bottom: 10px;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .stat-item p {
-      font-size: 16px;
-      color: #9ca3af;
-      font-weight: 500;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
     }
 
-    .contact {
-      background: #F5F7FA;
-    }
-
+    /* Contact Section */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -325,25 +577,41 @@
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 30px;
     }
 
-    .info-item h4 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0A1628;
-      margin-bottom: 8px;
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
     }
 
-    .info-item p {
-      font-size: 15px;
-      color: #6b7280;
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(0, 240, 255, 0.1);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 1.2rem;
+    }
+
+    .info-text h4 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .info-text p {
+      color: var(--text-muted);
     }
 
     .contact-form {
-      background: #ffffff;
+      background: var(--bg-card);
       padding: 40px;
-      border-radius: 8px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .form-group {
@@ -352,104 +620,83 @@
 
     .form-control {
       width: 100%;
-      padding: 12px 16px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      transition: border-color 0.2s ease;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: var(--transition);
     }
 
     .form-control:focus {
       outline: none;
-      border-color: #0066FF;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
     }
 
     textarea.form-control {
-      resize: vertical;
-      min-height: 120px;
+      resize: none;
+      height: 150px;
     }
 
+    /* Footer */
     footer {
-      background: #0A1628;
-      color: #ffffff;
-      padding: 40px 0;
+      background: #020205;
+      padding: 50px 0 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .footer-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
     }
 
     .footer-logo {
-      font-size: 20px;
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: #fff;
     }
 
     .social-links {
       display: flex;
-      gap: 16px;
+      gap: 15px;
     }
 
     .social-link {
       width: 40px;
       height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffff;
-      text-decoration: none;
-      transition: background 0.2s ease;
+      border-radius: 50%;
+      transition: var(--transition);
+      color: #fff;
     }
 
     .social-link:hover {
-      background: #0066FF;
+      background: var(--primary);
+      transform: translateY(-3px);
     }
 
     .copyright {
       text-align: center;
-      margin-top: 32px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #9ca3af;
-      font-size: 14px;
+      color: #555;
+      font-size: 0.9rem;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: #ffffff;
-        flex-direction: column;
-        padding: 24px;
-        border-bottom: 1px solid #e5e7eb;
-        gap: 20px;
-      }
-
-      .nav-links.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
+    /* Responsive */
+    @media (max-width: 992px) {
       .hero h1 {
-        font-size: 40px;
-      }
-
-      .hero .subtitle {
-        font-size: 20px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
+        font-size: 3.5rem;
       }
 
       .about-grid,
@@ -457,304 +704,455 @@
         grid-template-columns: 1fr;
       }
 
-      .games-grid {
-        grid-template-columns: 1fr;
+      .about-content {
+        border-left: none;
+        border-top: 4px solid var(--secondary);
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: var(--bg-card);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease;
+        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
       }
 
-      .services-grid {
-        grid-template-columns: 1fr 1fr;
+      .nav-menu.active {
+        right: 0;
       }
 
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
+      .menu-toggle {
+        display: block;
+        z-index: 1001;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
       }
 
       .section-title h2 {
-        font-size: 32px;
+        font-size: 2.2rem;
       }
 
-      .footer-content {
+      .hero-btns {
         flex-direction: column;
-        gap: 24px;
       }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Animation classes */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
+
+  <!-- Header -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-gamepad"></i>
+        BINGO GRAVITY
+      </a>
+      <div class="menu-toggle" id="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
       <nav>
-        <div class="logo">Bingo Gravity</div>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home" onclick="closeMenu()">Home</a></li>
-          <li><a href="#about" onclick="closeMenu()">About</a></li>
-          <li><a href="#games" onclick="closeMenu()">Games</a></li>
-          <li><a href="#services" onclick="closeMenu()">Services</a></li>
-          <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#games" class="nav-link">Games</a></li>
+          <li><a href="#vision" class="nav-link">Vision</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section id="home" class="hero">
+    <div class="hero-grid"></div>
     <div class="container">
-      <h1>Bingo Gravity</h1>
-      <p class="subtitle">Independent Game Development & Global Publishing</p>
-      <p class="tagline">Creating games for 10 million players worldwide</p>
-      <div class="hero-buttons">
-        <a href="#games" class="btn btn-primary">View Games</a>
-        <a href="#contact" class="btn btn-secondary">Contact</a>
+      <div class="hero-content">
+        <div class="hero-tagline fade-in-up">Crafting Digital Entertainment for the World</div>
+        <h1 class="fade-in-up" style="transition-delay: 0.1s;">Independent Game Development & <span
+            class="text-gradient">Global Publishing</span></h1>
+        <p class="fade-in-up" style="transition-delay: 0.2s;">Join nearly 10 million users in experiencing our
+          cutting-edge digital worlds. We are building the platform for new entertainment models.</p>
+        <div class="hero-btns fade-in-up" style="transition-delay: 0.3s;">
+          <a href="#games" class="btn btn-primary">Explore Our Games</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="about">
+  <!-- About Section -->
+  <section id="about" class="section-padding">
     <div class="container">
       <div class="about-grid">
-        <div class="about-content">
-          <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 24px;">About Us</h2>
-          <p>Bingo Gravity is a new digital technology company integrating independent R&D and global operation of
+        <div class="about-image fade-in-up">
+          <img
+            src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            alt="Game Development Office" style="border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+        </div>
+        <div class="about-content fade-in-up" style="transition-delay: 0.2s;">
+          <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+            <span>Who We Are</span>
+            <h2>About Bingo Gravity</h2>
+          </div>
+          <p class="about-text">
+            Bingo Gravity is a new digital technology company integrating independent R&D and global operation of
             digital cultural entertainment content. Its business covers multiple fields such as game development, game
-            platform construction, game publishing, and game operation.</p>
-          <p>The game products independently developed by the company include card games, simulation management, casual
-            cultivation, etc., and have won the favor of nearly 10 million users.</p>
-          <p>In the future, Bingo Gravity will continue to explore in all fields of online entertainment, expand its
-            market at home and abroad, and realize the vision of 'a platform for new entertainment models under the
-            Internet thinking'.</p>
-        </div>
-        <img src="images/about.png" alt="Bingo Gravity Global Operations" class="about-image">
-      </div>
-    </div>
-  </section>
-
-  <section id="games" class="games">
-    <div class="container">
-      <div class="section-title">
-        <h2>Our Games</h2>
-        <p>Diverse experiences for millions of players</p>
-      </div>
-      <div class="games-grid">
-        <div class="game-card">
-          <img src="images/game1.png" alt="Cyber Tactics" class="game-image">
-          <div class="game-info">
-            <div class="game-genre">Card Strategy</div>
-            <h3>Cyber Tactics</h3>
-            <p>Strategic card battles in a futuristic world where every decision matters.</p>
-          </div>
-        </div>
-        <div class="game-card">
-          <img src="images/game2.png" alt="Shadow Bound" class="game-image">
-          <div class="game-info">
-            <div class="game-genre">Dark Fantasy RPG</div>
-            <h3>Shadow Bound</h3>
-            <p>Immerse yourself in a dark fantasy world filled with mystery and adventure.</p>
-          </div>
-        </div>
-        <div class="game-card">
-          <img src="images/game3.png" alt="Primal Quest" class="game-image">
-          <div class="game-info">
-            <div class="game-genre">Adventure</div>
-            <h3>Primal Quest</h3>
-            <p>Explore prehistoric lands and discover ancient secrets in this epic adventure.</p>
-          </div>
-        </div>
-        <div class="game-card">
-          <img src="images/game4.png" alt="Neon Strike" class="game-image">
-          <div class="game-info">
-            <div class="game-genre">Action Game</div>
-            <h3>Neon Strike</h3>
-            <p>Fast-paced action in a cyberpunk world where reflexes are everything.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="services" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>What We Do</h2>
-        <p>Comprehensive gaming solutions from development to operations</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="2">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-          <h3>Game Development</h3>
-          <p>Independent R&D of innovative games across multiple genres including card, simulation, and casual games.
+            platform construction, game publishing, and game operation.
           </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="2">
-              <rect x="2" y="7" width="20" height="14" rx="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-            </svg>
+          <p class="about-text">
+            The game products independently developed by the company include card games, simulation management, casual
+            cultivation, etc., and have won the favor of nearly 10 million users.
+          </p>
+          <div class="about-highlight">
+            <i class="fa-solid fa-users" style="color: var(--primary); margin-right: 10px;"></i>
+            10 Million+ Players Worldwide
           </div>
-          <h3>Platform Construction</h3>
-          <p>Building robust gaming platforms that deliver seamless experiences to millions of users.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M2 12h20"></path>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-              </path>
-            </svg>
-          </div>
-          <h3>Publishing</h3>
-          <p>Global game publishing services reaching players in over 50 countries worldwide.</p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0A1628" stroke-width="2">
-              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-            </svg>
-          </div>
-          <h3>Operations</h3>
-          <p>Comprehensive game operations ensuring long-term success and player engagement.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="stats">
+  <!-- Business Areas -->
+  <section class="section-padding" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <span>Our Expertise</span>
+        <h2>What We Do</h2>
+      </div>
+      <div class="areas-grid">
+        <div class="area-card fade-in-up" style="transition-delay: 0.1s;">
+          <div class="area-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Game Development</h3>
+          <p>Independent R&D of innovative game experiences across multiple genres including RPG and Simulation.</p>
+        </div>
+        <div class="area-card fade-in-up" style="transition-delay: 0.2s;">
+          <div class="area-icon"><i class="fa-solid fa-network-wired"></i></div>
+          <h3>Platform Construction</h3>
+          <p>Building robust gaming ecosystems and infrastructure for seamless player interaction.</p>
+        </div>
+        <div class="area-card fade-in-up" style="transition-delay: 0.3s;">
+          <div class="area-icon"><i class="fa-solid fa-earth-americas"></i></div>
+          <h3>Game Publishing</h3>
+          <p>Global distribution and market expansion, bringing our titles to players worldwide.</p>
+        </div>
+        <div class="area-card fade-in-up" style="transition-delay: 0.4s;">
+          <div class="area-icon"><i class="fa-solid fa-headset"></i></div>
+          <h3>Game Operations</h3>
+          <p>Live service management and active community engagement to ensure long-term value.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Games Section -->
+  <section id="games" class="section-padding">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <span>Portfolio</span>
+        <h2>Our Game Universe</h2>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Diverse genres, endless entertainment.
+          Explore the worlds we have created.</p>
+      </div>
+
+      <div class="games-grid">
+        <!-- Card Game -->
+        <div class="game-card fade-in-up">
+          <div class="game-image-wrapper">
+            <img
+              src="https://cdn.gooo.ai/user-files/b50c736a169130c534232371761803cd1c6a8cf4050746e1a1c6a7c0d87f69ae@chat"
+              alt="Futuristic Warrior">
+            <div class="game-overlay">
+              <div class="game-genre">Card Strategy</div>
+              <h3 class="game-title">Cyber Tactics</h3>
+              <p class="game-desc">A high-stakes futuristic card battler where strategy determines the fate of the
+                galaxy.</p>
+              <a href="#" class="game-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark Fantasy RPG -->
+        <div class="game-card fade-in-up" style="transition-delay: 0.1s;">
+          <div class="game-image-wrapper">
+            <img
+              src="https://cdn.gooo.ai/user-files/8858482f10ab8993b19a6de46b9e8c1429f15c390a107f1f5150595e218bf766@chat"
+              alt="Shadow Warrior">
+            <div class="game-overlay">
+              <div class="game-genre">Dark Fantasy RPG</div>
+              <h3 class="game-title">Shadow Bound</h3>
+              <p class="game-desc">Embrace the darkness in this immersive RPG. Master the shadows to defeat ancient
+                evils.</p>
+              <a href="#" class="game-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Adventure Quest -->
+        <div class="game-card fade-in-up" style="transition-delay: 0.2s;">
+          <div class="game-image-wrapper">
+            <img
+              src="https://cdn.gooo.ai/user-files/a4a596d62c7427febc2ed724b16aa467b3e9afed0402f97e0ef49871f53808a6@chat"
+              alt="Dinosaur Riders">
+            <div class="game-overlay">
+              <div class="game-genre">Adventure</div>
+              <h3 class="game-title">Primal Quest</h3>
+              <p class="game-desc">Ride through prehistoric lands in this colorful adventure. Discovery awaits at every
+                turn.</p>
+              <a href="#" class="game-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cyberpunk Action -->
+        <div class="game-card fade-in-up" style="transition-delay: 0.3s;">
+          <div class="game-image-wrapper">
+            <img
+              src="https://cdn.gooo.ai/user-files/b7f4511841ceec1eb9a1276c01ff5b0241d72f1d37e4cdc06c806d1cecbca1ee@chat"
+              alt="Cyberpunk Warrior">
+            <div class="game-overlay">
+              <div class="game-genre">Action</div>
+              <h3 class="game-title">Neon Strike</h3>
+              <p class="game-desc">Fast-paced cyberpunk action. Defeat the mechanical horde in a city that never sleeps.
+              </p>
+              <a href="#" class="game-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="section-padding stats-section">
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <h3>10M+</h3>
-          <p>Players</p>
+          <h3 data-target="10">0M+</h3>
+          <p>Active Players</p>
         </div>
         <div class="stat-item">
-          <h3>15+</h3>
-          <p>Games</p>
+          <h3 data-target="15">0+</h3>
+          <p>Game Titles</p>
         </div>
         <div class="stat-item">
-          <h3>50+</h3>
+          <h3 data-target="50">0+</h3>
           <p>Countries</p>
         </div>
         <div class="stat-item">
-          <h3>8+</h3>
-          <p>Years</p>
+          <h3 data-target="8">0+</h3>
+          <p>Years Experience</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="contact" class="contact">
+  <!-- Vision Section -->
+  <section id="vision" class="section-padding">
     <div class="container">
-      <div class="section-title">
-        <h2>Contact Us</h2>
-        <p>Get in touch with our team</p>
+      <div class="vision-box fade-in-up">
+        <div class="section-title" style="margin-bottom: 30px;">
+          <span>Looking Forward</span>
+          <h2>Future Vision</h2>
+        </div>
+        <p style="font-size: 1.5rem; text-align: center; max-width: 900px; margin: 0 auto; color: var(--text-main);">
+          "Bingo Gravity will continue to explore in all fields of online entertainment, expand its market at home and
+          abroad, and realize the vision of 'a platform for new entertainment models under the Internet thinking'."
+        </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section-padding" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <div class="section-title fade-in-up">
+        <span>Connect With Us</span>
+        <h2>Get In Touch</h2>
+      </div>
+
       <div class="contact-grid">
-        <div class="contact-info">
+        <div class="contact-info fade-in-up">
           <div class="info-item">
-            <h4>Email</h4>
-            <p>bingogravity@outlook.com</p>
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="info-text">
+              <h4>Location</h4>
+              <p>Mackenzie St, Melbourne, VIC, Australia</p>
+            </div>
           </div>
           <div class="info-item">
-            <h4>Location</h4>
-            <p>Mackenzie St, Melbourne, VIC, Australia</p>
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="info-text">
+              <h4>Email</h4>
+              <p>bingogravity@outlook.com</p>
+            </div>
           </div>
           <div class="info-item">
-            <h4>Business Hours</h4>
-            <p>Monday - Friday: 9:00 AM - 6:00 PM AEST</p>
+            <div class="info-icon"><i class="fa-solid fa-globe"></i></div>
+            <div class="info-text">
+              <h4>Global Reach</h4>
+              <p>Operating in North America, Asia, and Europe</p>
+            </div>
           </div>
         </div>
-        <div class="contact-form">
-          <form onsubmit="handleSubmit(event)">
+
+        <div class="contact-form fade-in-up" style="transition-delay: 0.2s;">
+          <form
+            onsubmit="event.preventDefault(); alert('Thank you for contacting Bingo Gravity! We will get back to you shortly.');">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Name" required>
+              <input type="text" class="form-control" placeholder="Your Name" required>
             </div>
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="email" class="form-control" placeholder="Your Email" required>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Company (Optional)">
             </div>
             <div class="form-group">
-              <textarea class="form-control" placeholder="Message" required></textarea>
+              <textarea class="form-control" placeholder="Your Message" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="footer-logo">Bingo Gravity</div>
+        <div class="footer-logo">
+          <i class="fa-solid fa-gamepad" style="color: var(--secondary);"></i> BINGO GRAVITY
+        </div>
         <div class="social-links">
-          <!--     <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-              </path>
-            </svg>
-          </a>
-          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-            </svg>
-          </a>
-          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="none" stroke="#0A1628" stroke-width="2">
-              </path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="#0A1628" stroke-width="2"></line>
-            </svg>
-          </a>
-          <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a> -->
+          <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fa-brands fa-discord"></i></a>
         </div>
       </div>
       <div class="copyright">
-        © 2024 Bingo Gravity. All rights reserved. | bingogravity.com
+        &copy; 2023 Bingo Gravity. All Rights Reserved. Melbourne, Australia.
       </div>
     </div>
   </footer>
 
   <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
-    }
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    function closeMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.remove('active');
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-      alert('Thank you for your message. We will get back to you soon!');
-      event.target.reset();
-    }
-
-    window.addEventListener('scroll', function () {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.style.boxShadow = '0 2px 8px rgba(10, 22, 40, 0.08)';
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      const icon = menuToggle.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
       } else {
-        header.style.boxShadow = 'none';
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
       }
     });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.querySelector('i').classList.remove('fa-xmark');
+        menuToggle.querySelector('i').classList.add('fa-bars');
+      });
+    });
+
+    // Sticky Header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Intersection Observer for Fade In Animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Number Counter Animation
+    const statsSection = document.querySelector('.stats-section');
+    let statsAnimated = false;
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !statsAnimated) {
+        const counters = document.querySelectorAll('.stat-item h3');
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const suffix = counter.innerText.replace('0', ''); // Get M+ or +
+          const duration = 2000; // ms
+          const increment = target / (duration / 16);
+
+          let current = 0;
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              counter.innerText = Math.ceil(current) + suffix;
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.innerText = target + suffix;
+            }
+          };
+          updateCounter();
+        });
+        statsAnimated = true;
+      }
+    }, { threshold: 0.5 });
+
+    statsObserver.observe(statsSection);
+
   </script>
 </body>
 
